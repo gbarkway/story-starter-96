@@ -5,7 +5,7 @@ import adventure from './sceneManifests/adventure.json';
 const imageContext = require.context('./assets/', true, /\.png$/)
 const soundContext = require.context('./assets/', true, /\.ogg$/)
 
-const filename = name => name.replace(/[!.&,?]/g, '_');
+const filename = name => name.replace(/[!.&,?'-]/g, '_');
 
 const importScenes = sceneManifest => ({
     name: sceneManifest.name,
