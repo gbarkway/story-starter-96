@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import adventure from './adventure';
+import scenes from './scenes';
 import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {
-    console.log(adventure);
+    console.log(scenes);
   })
   return (
     <div className="App">
