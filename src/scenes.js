@@ -1,4 +1,5 @@
 import adventure from './sceneManifests/adventure.json';
+import animals from './sceneManifests/animals.json';
 
 // import everything in a folder
 // https://webpack.js.org/guides/dependency-management/#context-module-api
@@ -16,6 +17,9 @@ const importScenes = (sceneManifest) => ({
   })),
 });
 
-const scenes = [importScenes(adventure)];
+const scenes = [
+  importScenes(adventure),
+  importScenes(animals),
+];
 
 export default scenes;

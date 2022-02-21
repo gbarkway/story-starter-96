@@ -1,24 +1,33 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import '98.css'
-import scenes from './scenes';
+import collections from './scenes';
 
 
 function App() {
-  const [image, setImage] = useState(scenes[0].scenes[3].image);
+  const [scene, setScene] = useState(collections[0].scenes[0]);
+  const [collection, setCollection] = useState(collections[0])
+
+  const handleSelectChange = useCallback((event) => {
+    setCollection(collections.find(sc => sc.name === event.target.value));
+  }, []);
+
+  useEffect(() => {
+    setScene(collection.scenes[0])
+  }, [collection])
 
   return (
     <div className="App">
       <div className="frame">
         <div className="dropdown">
-          <select name="sceneCollections">
-            {scenes.map((scene) => (
-              <option value={scene.directory}>{scene.name}</option>
+          <select name="sceneCollections" value={collection.name} onChange = {handleSelectChange}>
+            {collections.map((collection, i) => (
+              <option value={collection.name} key={`dropdown${i}`}>{collection.name}</option>
             ))}
           </select>
         </div>
         <div className="image">
-          <img src={image}></img>
+          <img src={scene.image}></img>
         </div>
       </div>
     </div>
