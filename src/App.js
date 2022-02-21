@@ -16,8 +16,13 @@ function App() {
     setScene(collection.scenes[0])
   }, [collection])
 
+  useEffect(() => {
+    console.log(scene)
+  }, [scene])
+
   return (
     <div className="App">
+      <audio autoPlay src={scene.sound}>Your browser does not support audio</audio>
       <div className="frame">
         <div className="dropdown">
           <select name="sceneCollections" value={collection.name} onChange = {handleSelectChange}>
