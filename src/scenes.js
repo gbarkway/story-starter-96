@@ -2,8 +2,8 @@ import adventure from './sceneManifests/adventure.json';
 
 // import everything in a folder
 // https://webpack.js.org/guides/dependency-management/#context-module-api
-const imageContext = require.context('./assets/', true, /\.png$/);
-const soundContext = require.context('./assets/', true, /\.ogg$/);
+const imageContext = require.context('./scenes/', true, /\.png$/);
+const soundContext = require.context('./scenes/', true, /\.ogg$/);
 
 const filename = (name) => name.replace(/[!.&,?'-]/g, '_');
 
