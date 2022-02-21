@@ -34,6 +34,9 @@ function App() {
         <div className="image">
           <img src={scene.image}></img>
         </div>
+        <div className="title">
+          <label>{scene.name}</label>
+        </div>
       </div>
     </div>
   );
