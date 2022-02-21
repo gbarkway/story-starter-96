@@ -72,16 +72,18 @@
   outline: none;
 }
 #left {
-  background-image: url(./leftButton.png);
+  background-image: url(./leftButtonSprite.png);
+  background-position: top left;
   margin-right: 8px;
 }
 #left:active {
-  background-image: url(./leftButtonPressed.png)
+  background-position: top right;
 }
 #right {
-  background-image: url(./rightButton.png);
+  background-image: url(./rightButtonSprite.png);
+  background-position: top left;
   margin-left: 8px;
 }
 #right:active {
-  background-image: url(./rightButtonPressed.png)
+  background-position: top right;
 }
