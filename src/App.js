@@ -12,6 +12,7 @@ function App() {
   const nextAudio = useRef();
   const prevAudio = useRef();
 
+  // const [collection, setCollection, scene, next, prev] = useScenes()
   useEffect(() => {
     setSceneIndex(0);
   }, [collection]);
