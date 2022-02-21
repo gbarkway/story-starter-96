@@ -40,3 +40,42 @@
   color: black;
   justify-content: center;
 }
+
+.buttons {
+  width: 100%;
+  height: 35px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+#left,#right{
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 45px;
+  min-width: 45px;
+  height: 32px;
+  border:0;
+  box-shadow: none;
+  padding: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+#left:focus,#right:focus {
+  outline: none;
+}
+#left {
+  background-image: url(./leftButton.png);
+  margin-right: 8px;
+}
+#left:active {
+  background-image: url(./leftButtonPressed.png)
+}
+#right {
+  background-image: url(./rightButton.png);
+  margin-left: 8px;
+}
+#right:active {
+  background-image: url(./rightButtonPressed.png)
+}
