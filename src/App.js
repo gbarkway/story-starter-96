@@ -1,16 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './App.css';
 import '98.css'
-import next from './next.ogg';
-import prev from './prev.ogg';
 import collections from './scenes';
 
 function App() {
   const [collection, setCollection] = useState(collections[0])
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
-  const nextAudio = useRef();
-  const prevAudio = useRef();
 
   // const [collection, setCollection, scene, next, prev] = useScenes()
   useEffect(() => {
@@ -24,7 +20,6 @@ function App() {
   }, [sceneIndex, collection.scenes]);
 
   const handleNext = () => {
-    nextAudio.current.play().catch(() => {});
     setSceneIndex((sceneIndex + 1) % collection.scenes.length)
   }
 
@@ -33,7 +28,6 @@ function App() {
   }, []);
 
   const handlePrev = () => {
-    prevAudio.current.play().catch(() => {});
     if (sceneIndex) {
       setSceneIndex(sceneIndex - 1)
     } else {
@@ -43,8 +37,6 @@ function App() {
 
   return (
     <div className="App">
-      <audio src={next} ref={nextAudio}></audio>
-      <audio src={prev} ref={prevAudio}></audio>
       <audio autoPlay src={scene.sound}>Your browser does not support audio</audio>
       <div className="frame">
         <div className="dropdown">
