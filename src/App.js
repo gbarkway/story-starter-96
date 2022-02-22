@@ -1,17 +1,14 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import './App.css';
 import '98.css'
 import collections from './scenes';
+import useAudio from './useAudio';
 
 function App() {
   const [collection, setCollection] = useState(collections[0])
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
-  const audioRef = useRef();
-
-  useEffect(() => {
-    audioRef.current = new Audio();
-  }, []);
+  const play = useAudio();
 
   const handleNext = () => {
     const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
@@ -20,9 +17,7 @@ function App() {
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
 
-    audioRef.current.src = nextScene.sound;
-    audioRef.current.load();
-    audioRef.current.play();
+    play(nextScene.sound);
   }
 
   const handleSelectChange = useCallback((event) => {
@@ -33,10 +28,8 @@ function App() {
     setScene(newScene);
     setCollection(newCollection);
 
-    audioRef.current.src = newScene.sound;
-    audioRef.current.load();
-    audioRef.current.play();
-  }, []);
+    play(newScene.sound);
+  }, [play]);
 
   const handlePrev = () => {
     const nextSceneIndex = sceneIndex ? (sceneIndex - 1) : (collection.scenes.length - 1)
@@ -45,9 +38,7 @@ function App() {
     setSceneIndex(nextSceneIndex)
     setScene(nextScene)
 
-    audioRef.current.src = nextScene.sound;
-    audioRef.current.load();
-    audioRef.current.play();
+    play(nextScene.sound);
   }
 
   return (
@@ -61,7 +52,7 @@ function App() {
           </select>
         </div>
         <div className="image">
-          <img src={scene.image}></img>
+          <img src={scene.image} alt={scene.name}></img>
         </div>
         <div className="title">
           <label>{scene.name}</label>
