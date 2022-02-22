@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: rgb(2,0,36);
+  background: linear-gradient(156deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 100%, rgba(0,212,255,1) 100%); 
 }
 
 .image {
@@ -87,4 +89,21 @@
 }
 #right:active {
   background-position: top right;
+}
+#launch {
+  background-image: url(./launcher.gif);
+  width: 39px;
+  min-width: 39px;
+  height: 44px;
+  min-height: 44px;
+}
+.launcher {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.launcher label {
+  margin: 5px;
+  color: white;
 }
