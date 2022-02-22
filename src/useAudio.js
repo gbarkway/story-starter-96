@@ -1,19 +1,19 @@
 import { useEffect, useRef } from 'react';
 
 function useAudio() {
-    const audioRef = useRef();
+  const audioRef = useRef();
 
-    useEffect(() => {
-        audioRef.current = new Audio();
-    }, []);
+  useEffect(() => {
+    audioRef.current = new Audio();
+  }, []);
 
-    function play(src) {
-        audioRef.current.src = src;
-        audioRef.current.load();
-        return audioRef.current.play();
-    }
+  function play(src) {
+    audioRef.current.src = src;
+    audioRef.current.load();
+    return audioRef.current.play();
+  }
 
-    return play;
+  return play;
 }
 
 export default useAudio;

@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react';
 import './App.css';
-import '98.css'
+import '98.css';
 import collections from './scenes';
 import useAudio from './useAudio';
 
 function App() {
-  const [collection, setCollection] = useState(collections[0])
+  const [collection, setCollection] = useState(collections[0]);
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const play = useAudio();
@@ -18,36 +18,41 @@ function App() {
     setScene(nextScene);
 
     play(nextScene.sound);
-  }
+  };
 
-  const handleSelectChange = useCallback((event) => {
-    const newCollection = collections.find(sc => sc.name === event.target.value);
-    const newScene = newCollection.scenes[0];
+  const handleSelectChange = useCallback(
+    (event) => {
+      const newCollection = collections.find((sc) => sc.name === event.target.value);
+      const newScene = newCollection.scenes[0];
 
-    setSceneIndex(0);
-    setScene(newScene);
-    setCollection(newCollection);
+      setSceneIndex(0);
+      setScene(newScene);
+      setCollection(newCollection);
 
-    play(newScene.sound);
-  }, [play]);
+      play(newScene.sound);
+    },
+    [play]
+  );
 
   const handlePrev = () => {
-    const nextSceneIndex = sceneIndex ? (sceneIndex - 1) : (collection.scenes.length - 1)
-    const nextScene = collection.scenes[nextSceneIndex]
+    const nextSceneIndex = sceneIndex ? sceneIndex - 1 : collection.scenes.length - 1;
+    const nextScene = collection.scenes[nextSceneIndex];
 
-    setSceneIndex(nextSceneIndex)
-    setScene(nextScene)
+    setSceneIndex(nextSceneIndex);
+    setScene(nextScene);
 
     play(nextScene.sound);
-  }
+  };
 
   return (
     <div className="App">
       <div className="frame">
         <div className="dropdown">
-          <select name="sceneCollections" value={collection.name} onChange = {handleSelectChange}>
+          <select name="sceneCollections" value={collection.name} onChange={handleSelectChange}>
             {collections.map((collection, i) => (
-              <option value={collection.name} key={`dropdown${i}`}>{collection.name}</option>
+              <option value={collection.name} key={`dropdown${i}`}>
+                {collection.name}
+              </option>
             ))}
           </select>
         </div>

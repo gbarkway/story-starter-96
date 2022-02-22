@@ -17,9 +17,6 @@ const importScenes = (sceneManifest) => ({
   })),
 });
 
-const scenes = [
-  importScenes(adventure),
-  importScenes(animals),
-];
+const scenes = [importScenes(adventure), importScenes(animals)];
 
 export default scenes;

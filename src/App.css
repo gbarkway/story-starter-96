@@ -55,20 +55,21 @@
   justify-content: center;
 }
 
-#left,#right{
+#left,
+#right {
   background-repeat: no-repeat;
   background-position: center;
   width: 45px;
   min-width: 45px;
   height: 32px;
-  border:0;
+  border: 0;
   box-shadow: none;
   padding: 0px;
   padding-left: 0px;
   padding-right: 0px;
-
 }
-#left:focus,#right:focus {
+#left:focus,
+#right:focus {
   outline: none;
 }
 #left {

@@ -1,8 +1,5 @@
 {
-    "name": "Animals",
-    "directory": "animals",
-    "scenes": [
-      "Help at last"
-    ]
-  }
-  
+  "name": "Animals",
+  "directory": "animals",
+  "scenes": ["Help at last"]
+}
