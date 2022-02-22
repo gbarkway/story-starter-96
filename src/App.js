@@ -7,37 +7,43 @@ function App() {
   const [collection, setCollection] = useState(collections[0])
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
-
-  // const [collection, setCollection, scene, next, prev] = useScenes()
-  useEffect(() => {
-    setSceneIndex(0);
-  }, [collection]);
+  const audioRef = useRef();
 
   useEffect(() => {
-    if (collection.scenes[sceneIndex]) {
-      setScene(collection.scenes[sceneIndex])
-    }
-  }, [sceneIndex, collection.scenes]);
+    audioRef.current = new Audio();
+  }, []);
 
   const handleNext = () => {
-    setSceneIndex((sceneIndex + 1) % collection.scenes.length)
+    const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
+    const nextScene = collection.scenes[nextSceneIndex];
+
+    setSceneIndex(nextSceneIndex);
+    setScene(nextScene);
+
+    audioRef.current.src = nextScene.sound;
+    audioRef.current.load();
+    audioRef.current.play();
   }
 
   const handleSelectChange = useCallback((event) => {
-    setCollection(collections.find(sc => sc.name === event.target.value));
+    const newCollection = collections.find(sc => sc.name === event.target.value);
+    const newScene = newCollection.scenes[0];
+
+    setSceneIndex(0);
+    setScene(newScene);
+    setCollection(newCollection);
   }, []);
 
   const handlePrev = () => {
-    if (sceneIndex) {
-      setSceneIndex(sceneIndex - 1)
-    } else {
-      setSceneIndex(collection.scenes.length - 1)
-    }
+    const nextSceneIndex = sceneIndex ? (sceneIndex - 1) : (collection.scenes.length - 1)
+    const nextScene = collection.scenes[nextSceneIndex]
+
+    setSceneIndex(nextSceneIndex)
+    setScene(nextScene)
   }
 
   return (
     <div className="App">
-      <audio autoPlay src={scene.sound}>Your browser does not support audio</audio>
       <div className="frame">
         <div className="dropdown">
           <select name="sceneCollections" value={collection.name} onChange = {handleSelectChange}>
