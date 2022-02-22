@@ -32,6 +32,10 @@ function App() {
     setSceneIndex(0);
     setScene(newScene);
     setCollection(newCollection);
+
+    audioRef.current.src = newScene.sound;
+    audioRef.current.load();
+    audioRef.current.play();
   }, []);
 
   const handlePrev = () => {
@@ -40,6 +44,10 @@ function App() {
 
     setSceneIndex(nextSceneIndex)
     setScene(nextScene)
+
+    audioRef.current.src = nextScene.sound;
+    audioRef.current.load();
+    audioRef.current.play();
   }
 
   return (
