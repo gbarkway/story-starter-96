@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import './App.css';
 import '98.css';
 import collections from './scenes';
@@ -9,7 +9,20 @@ function App() {
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const [show, setShow] = useState(false);
+  const [bgSrc, setBgSrc] = useState("https://assets.digitalocean.com/labs/images/community_bg.png")
   const [play, stop] = useAudio();
+  const intervalRef = useRef();
+
+  useEffect(() => {
+    if (show) {
+      intervalRef.current = setInterval(() => {
+        console.log('interval');
+      }, 2000);
+    } else if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, [show, setShow]);
 
   const handleNext = () => {
     const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
@@ -50,7 +63,7 @@ function App() {
       <img
         id="bg"
         className="bg"
-        src="https://assets.digitalocean.com/labs/images/community_bg.png"
+        src={bgSrc}
         alt=""
       ></img>
       {show ? (
