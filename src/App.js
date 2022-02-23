@@ -47,44 +47,51 @@ function App() {
 
   return (
     <div className="App">
-      { show ? (
-      <div className="frame">
-      <div className="dropdown">
-        <select name="sceneCollections" value={collection.name} onChange={handleSelectChange}>
-          {collections.map((collection, i) => (
-            <option value={collection.name} key={`dropdown${i}`}>
-              {collection.name}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="image">
-        <img src={scene.image} alt={scene.name}></img>
-      </div>
-      <div className="title">
-        <label>{scene.name}</label>
-      </div>
-      <div className="buttons">
-        <button type="button" id="left" onClick={handlePrev}></button>
-        <button type="button" id="right" onClick={handleNext}></button>
-      </div>
-      <div className="closeOk">
-        <button type="button" id="close" onClick={() => {
-          setShow(false);
-          stop();
-        }}></button>
-      </div>
-    </div>
+      {show ? (
+        <div className="frame">
+          <div className="dropdown">
+            <select name="sceneCollections" value={collection.name} onChange={handleSelectChange}>
+              {collections.map((collection, i) => (
+                <option value={collection.name} key={`dropdown${i}`}>
+                  {collection.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="image">
+            <img src={scene.image} alt={scene.name}></img>
+          </div>
+          <div className="title">
+            <label>{scene.name}</label>
+          </div>
+          <div className="buttons">
+            <button type="button" id="left" onClick={handlePrev}></button>
+            <button type="button" id="right" onClick={handleNext}></button>
+          </div>
+          <div className="closeOk">
+            <button
+              type="button"
+              id="close"
+              onClick={() => {
+                setShow(false);
+                stop();
+              }}
+            ></button>
+          </div>
+        </div>
       ) : (
         <div class="launcher">
-          <button type="button" id="launch" onClick={() => {
-            setShow(true)
-            play(scene.sound)
-          }}></button>
+          <button
+            type="button"
+            id="launch"
+            onClick={() => {
+              setShow(true);
+              play(scene.sound);
+            }}
+          ></button>
           <label>Click here for inspiration</label>
         </div>
       )}
-
     </div>
   );
 }
