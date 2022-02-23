@@ -9,7 +9,7 @@ function App() {
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const [show, setShow] = useState(false);
-  const play = useAudio();
+  const [play, stop] = useAudio();
 
   const handleNext = () => {
     const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
@@ -67,6 +67,12 @@ function App() {
       <div className="buttons">
         <button type="button" id="left" onClick={handlePrev}></button>
         <button type="button" id="right" onClick={handleNext}></button>
+      </div>
+      <div className="closeOk">
+        <button type="button" id="close" onClick={() => {
+          setShow(false);
+          stop();
+        }}></button>
       </div>
     </div>
       ) : (
