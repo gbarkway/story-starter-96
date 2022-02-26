@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import './App.css';
 import '98.css';
 import collections from './scenes';
@@ -10,16 +9,15 @@ function App() {
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const [show, setShow] = useState(false);
-  const [bgSrc, setBgSrc] = useState("http://upload.wikimedia.org/wikipedia/commons/d/dd/Muybridge_race_horse_animated.gif")
+  const [bgSrc, setBgSrc] = useState("https://assets.digitalocean.com/labs/images/community_bg.png")
   const [play, stop] = useAudio();
   const intervalRef = useRef();
-  const [inProp, setInProp] = useState(false);
 
   useEffect(() => {
     if (show) {
       intervalRef.current = setInterval(() => {
-        setInProp((i) => !i)
-      }, 12000);
+        console.log('interval');
+      }, 2000);
     } else if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
@@ -62,14 +60,12 @@ function App() {
 
   return (
     <div className="App">
-      <CSSTransition in={inProp} timeout={10000} classNames="bg">
-        <img
-          id="bg"
-          className="bg"
-          src={bgSrc}
-          alt=""
-        ></img>
-      </CSSTransition>
+      <img
+        id="bg"
+        className="bg"
+        src={bgSrc}
+        alt=""
+      ></img>
       {show ? (
         <div className="frame">
           <div className="dropdown">
@@ -98,7 +94,6 @@ function App() {
               onClick={() => {
                 setShow(false);
                 stop();
-                setInProp(false);
               }}
             ></button>
           </div>
@@ -111,7 +106,6 @@ function App() {
             onClick={() => {
               setShow(true);
               play(scene.sound);
-              setInProp(true);
             }}
           ></button>
           <label>Click here for inspiration</label>
