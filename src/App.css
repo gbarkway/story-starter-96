@@ -65,8 +65,6 @@
   border: 0;
   box-shadow: none;
   padding: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
 }
 #left:focus,
 #right:focus,
@@ -123,9 +121,22 @@
   border: 0;
   box-shadow: none;
   padding: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
 }
 #close:active {
+  background-position: top right;
+}
+#ok {
+  background-image: url(./okButtonSprite.png);
+  height: 47px;
+  min-height: 47px;
+  width: 47px;
+  min-width: 47px;
+  background-position: top left;
+  border: 0;
+  box-shadow: none;
+  padding: 0px;
+  margin-right: 4px;
+}
+#ok:active {
   background-position: top right;
 }

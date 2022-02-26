@@ -71,12 +71,21 @@ function App() {
           <div className="closeOk">
             <button
               type="button"
+              id="ok"
+              onClick={() => {
+                setShow(false);
+                stop();
+              }}
+            ></button>
+            <button
+              type="button"
               id="close"
               onClick={() => {
                 setShow(false);
                 stop();
               }}
             ></button>
+
           </div>
         </div>
       ) : (
