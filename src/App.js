@@ -47,12 +47,6 @@ function App() {
 
   return (
     <div className="App">
-      <img
-        id="bg"
-        className="bg"
-        src="https://assets.digitalocean.com/labs/images/community_bg.png"
-        alt=""
-      ></img>
       {show ? (
         <div className="frame">
           <div className="dropdown">
@@ -86,7 +80,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <div className="launcher">
+        <div class="launcher">
           <button
             type="button"
             id="launch"
