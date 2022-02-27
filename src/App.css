@@ -104,7 +104,6 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-
 }
 .launcher label {
   margin: 5px;
@@ -153,7 +152,7 @@
   width: 100%;
   height: 100%;
   z-index: 0;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .bg div {

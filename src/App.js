@@ -49,22 +49,26 @@ function App() {
   return (
     <div className="App">
       <div id="links">
-        <a href="https://web.archive.org/web/20000815094541/http://www.microsoft.com/kids/creativewriter/" target="_blank">About</a>
+        <a href="https://web.archive.org/web/20000815094541/http://www.microsoft.com/kids/creativewriter/" target="_blank">
+          About
+        </a>
         <span>|</span>
-        <a href="https://twitter.com/gregbarkway" target="_blank">Twitter</a>
+        <a href="https://twitter.com/gregbarkway" target="_blank">
+          Twitter
+        </a>
       </div>
       <div id="bg" className="bg">
-        {
-          pastedImages.map((thing) => (
-            <div style={{
+        {pastedImages.map((thing) => (
+          <div
+            style={{
               top: `${thing.top}%`,
               left: `${thing.left}%`,
-              transform: `translateX(-33%) translateY(-33%) rotate(${thing.rotate}deg)`
-            }}>
-              <img src={thing.src}></img>
-            </div>
-          ))
-        }
+              transform: `translateX(-33%) translateY(-33%) rotate(${thing.rotate}deg)`,
+            }}
+          >
+            <img src={thing.src}></img>
+          </div>
+        ))}
       </div>
       {show ? (
         <div className="frame">
@@ -94,12 +98,16 @@ function App() {
               onClick={() => {
                 setShow(false);
                 stop();
-                setPastedImages(pastedImages.concat([{ 
-                  src: scene.image,
-                  top: Math.random() * 100,
-                  left: Math.random() * 100,
-                  rotate: Math.random() * 60 - 30
-                }]))
+                setPastedImages(
+                  pastedImages.concat([
+                    {
+                      src: scene.image,
+                      top: Math.random() * 100,
+                      left: Math.random() * 100,
+                      rotate: Math.random() * 60 - 30,
+                    },
+                  ])
+                );
               }}
             ></button>
             <button
@@ -110,7 +118,6 @@ function App() {
                 stop();
               }}
             ></button>
-
           </div>
         </div>
       ) : (
