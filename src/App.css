@@ -3,6 +3,9 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
   background: rgb(2, 0, 36);
   background: linear-gradient(156deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 100%, rgba(0, 212, 255, 1) 100%);
 }
@@ -24,6 +27,7 @@
   height: 396px;
   min-height: 396px;
   background-image: url(./frame.png);
+  z-index: 1;
 }
 
 .dropdown {
@@ -93,12 +97,14 @@
   min-width: 39px;
   height: 44px;
   min-height: 44px;
+  z-index: 1;
 }
 .launcher {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+
 }
 .launcher label {
   margin: 5px;
@@ -139,4 +145,17 @@
 }
 #ok:active {
   background-position: top right;
+}
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow:hidden;
+}
+
+.bg div {
+  position: absolute;
 }

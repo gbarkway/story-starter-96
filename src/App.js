@@ -10,6 +10,7 @@ function App() {
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const [show, setShow] = useState(false);
   const [play, stop] = useAudio();
+  const [pastedImages, setPastedImages] = useState([]);
 
   const handleNext = () => {
     const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
@@ -47,6 +48,19 @@ function App() {
 
   return (
     <div className="App">
+      <div id="bg" className="bg">
+        {
+          pastedImages.map((thing) => (
+            <div style={{
+              top: `${thing.top}%`,
+              left: `${thing.left}%`,
+              transform: `translateX(-33%) translateY(-33%) rotate(${thing.rotate}deg)`
+            }}>
+              <img src={thing.src}></img>
+            </div>
+          ))
+        }
+      </div>
       {show ? (
         <div className="frame">
           <div className="dropdown">
@@ -75,6 +89,12 @@ function App() {
               onClick={() => {
                 setShow(false);
                 stop();
+                setPastedImages(pastedImages.concat([{ 
+                  src: scene.image,
+                  top: Math.random() * 100,
+                  left: Math.random() * 100,
+                  rotate: Math.random() * 60 - 30
+                }]))
               }}
             ></button>
             <button
@@ -89,7 +109,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <div class="launcher">
+        <div className="launcher">
           <button
             type="button"
             id="launch"
