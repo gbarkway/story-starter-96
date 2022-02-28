@@ -107,6 +107,7 @@
 }
 .launcher label {
   margin: 5px;
+  font-size: 14px;
   color: white;
 }
 .closeOk {
@@ -158,23 +159,28 @@
 .bg div {
   position: absolute;
 }
-#links {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+
+#links a {
+  margin: 10px;
+  color: white;
+  font-size: 14px;
+}
+#links span {
+  color: white;
+  font-size: 14px;
+}
+#topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 25px;
   background-color: black;
   z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
 }
-#links a {
-  margin-right: 10px;
-  margin-left: 10px;
+#title {
   color: white;
-}
-#links span {
-  color: white;
+  font-size: 14px;
 }
