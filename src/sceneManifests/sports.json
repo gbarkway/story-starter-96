@@ -1,0 +1,22 @@
+{
+  "name": "Sports",
+  "directory": "sports",
+  "scenes": [
+    "Whish!",
+    "Flying",
+    "Mismatch",
+    "Achievement",
+    "Secret weapon",
+    "Go for it!",
+    "Snowboarder",
+    "Ouch!",
+    "Overthrown",
+    "Interview",
+    "The hike",
+    "More fun to read",
+    "Hang ten!",
+    "Need to speed",
+    "Master",
+    "Bicycle kick"  
+  ]
+}
