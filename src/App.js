@@ -61,13 +61,14 @@ function App() {
         </div>
       </div>
       <div id="bg" className="bg">
-        {pastedImages.map((thing) => (
+        {pastedImages.map((thing, i) => (
           <div
             style={{
               top: `${thing.top}%`,
               left: `${thing.left}%`,
               transform: `translateX(-33%) translateY(-33%) rotate(${thing.rotate}deg)`,
             }}
+            key={`pasted${i}`}
           >
             <img src={thing.src}></img>
           </div>
