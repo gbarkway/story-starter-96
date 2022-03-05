@@ -134,7 +134,9 @@ function App() {
               play(scene.sound);
             }}
           ></button>
-          <label>Click here for inspiration</label>
+          { pastedImages.length ? null : <label>Click here for inspiration</label>
+          }
+          
         </div>
       )}
     </div>
