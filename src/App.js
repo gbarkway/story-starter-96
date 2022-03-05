@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
 import './App.css';
-import '98.css';
 import collections from './scenes';
 import useAudio from './useAudio';
 
