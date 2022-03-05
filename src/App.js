@@ -1,7 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import './App.css';
 import collections from './scenes';
 import useAudio from './useAudio';
+import Hourglass from './hourglass.png';
 
 function App() {
   const [collection, setCollection] = useState(collections[0]);
@@ -10,10 +11,20 @@ function App() {
   const [show, setShow] = useState(false);
   const [play, stop] = useAudio();
   const [pastedImages, setPastedImages] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const loadingIndicatorTimer = useRef(null);
+
 
   const handleNext = () => {
     const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
     const nextScene = collection.scenes[nextSceneIndex];
+
+    if (loadingIndicatorTimer.current) {
+      clearTimeout(loadingIndicatorTimer.current);
+    }
+    loadingIndicatorTimer.current = setTimeout(() => {
+      setLoading(true);
+    }, 1000);
 
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
@@ -39,6 +50,13 @@ function App() {
     const nextSceneIndex = sceneIndex ? sceneIndex - 1 : collection.scenes.length - 1;
     const nextScene = collection.scenes[nextSceneIndex];
 
+    if (loadingIndicatorTimer.current) {
+      clearTimeout(loadingIndicatorTimer.current);
+    }
+    loadingIndicatorTimer.current = setTimeout(() => {
+      setLoading(true);
+    }, 1000);
+    
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
 
@@ -88,7 +106,13 @@ function App() {
             </select>
           </div>
           <div className="image">
-            <img src={scene.image} alt={scene.name} onClick={() => play(scene.sound)}></img>
+            <img id="main-image" src={scene.image} alt={scene.name} onClick={() => play(scene.sound)} onLoad={() => { 
+              setLoading(false);
+              if (loadingIndicatorTimer.current) {
+                clearTimeout(loadingIndicatorTimer.current);
+              }
+            }}></img>
+            <img id="loading" src={Hourglass} alt="Loading" style={{"visibility": loading ? "visible" : "hidden"}}></img>
           </div>
           <div className="title">
             <label>{scene.name}</label>

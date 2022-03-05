@@ -23,13 +23,16 @@ body::after {
   width: 246px;
   height: 198px;
   margin-left: 18px;
+  /*make loading indicator positioning easier by providing it w/ positioned ancestor*/
+  position: relative;
 }
 
-.image img {
+#main-image {
   width: inherit;
   height: inherit;
   /*Stop chrome from making images blurry*/
   image-rendering: -webkit-optimize-contrast;
+  cursor: pointer;
 }
 
 .frame {
@@ -209,4 +212,10 @@ body::after {
 #title {
   color: white;
   font-size: 14px;
+}
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
