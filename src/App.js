@@ -105,8 +105,9 @@ function App() {
                   pastedImages.concat([
                     {
                       src: scene.image,
-                      top: Math.random() * 100,
-                      left: Math.random() * 100,
+                      // ensure first image centered
+                      top: pastedImages.length ? Math.random() * 100 : 40,
+                      left: pastedImages.length ? Math.random() * 100 : 30,
                       rotate: Math.random() * 60 - 30,
                     },
                   ])
