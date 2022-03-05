@@ -11,9 +11,13 @@
 }
 
 /* preload frame: https://stackoverflow.com/questions/1373142/preloading-css-images */
-body::after{
-  position:absolute; width:0; height:0; overflow:hidden; z-index:-1; 
-  content:url(./frame.png);  
+body::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content: url(./frame.png);
 }
 
 .image {

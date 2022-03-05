@@ -21,13 +21,6 @@ const importScenes = (sceneManifest) => ({
   })),
 });
 
-const scenes = [
- adventure,
- animals,
- familyAndFriends,
- fantasy,
- mystery,
- romance
-].map(importScenes);
+const scenes = [adventure, animals, familyAndFriends, fantasy, mystery, romance].map(importScenes);
 
 export default scenes;

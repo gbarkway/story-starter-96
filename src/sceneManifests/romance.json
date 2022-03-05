@@ -1,14 +1,5 @@
 {
   "name": "Romance",
   "directory": "romance",
-  "scenes": [
-    "Kissy kissy",
-    "The gift",
-    "Ketchup love",
-    "Frosty morning",
-    "Seaside town",
-    "Venice",
-    "Valentine's arrival",
-    "Summer sweetheart"    
-  ]
+  "scenes": ["Kissy kissy", "The gift", "Ketchup love", "Frosty morning", "Seaside town", "Venice", "Valentine's arrival", "Summer sweetheart"]
 }

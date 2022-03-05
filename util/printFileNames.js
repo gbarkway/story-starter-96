@@ -1,5 +1,5 @@
 if (process.argv.length < 3) {
-  console.log('Usage: node printFileNames.js ./path/to/scene/manifest.json')
+  console.log('Usage: node printFileNames.js ./path/to/scene/manifest.json');
   process.exit(1);
 }
 
