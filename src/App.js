@@ -41,19 +41,23 @@ function App() {
     play(nextScene.sound);
   };
 
-  const handleSelectChange = useCallback(
-    (event) => {
-      const newCollection = collections.find((sc) => sc.name === event.target.value);
-      const newScene = newCollection.scenes[0];
+  const handleSelectChange = (event) => {
+    const newCollection = collections.find((sc) => sc.name === event.target.value);
+    const newScene = newCollection.scenes[0];
+    
+    if (loadingIndicatorTimer.current) {
+      clearTimeout(loadingIndicatorTimer.current);
+    }
+    loadingIndicatorTimer.current = setTimeout(() => {
+      setLoading(true);
+    }, 1000);
 
-      setSceneIndex(0);
-      setScene(newScene);
-      setCollection(newCollection);
+    setSceneIndex(0);
+    setScene(newScene);
+    setCollection(newCollection);
 
-      play(newScene.sound);
-    },
-    [play]
-  );
+    play(newScene.sound);
+  }
 
   const handlePrev = () => {
     const nextSceneIndex = sceneIndex ? sceneIndex - 1 : collection.scenes.length - 1;
