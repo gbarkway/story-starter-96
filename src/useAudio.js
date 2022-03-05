@@ -10,7 +10,7 @@ function useAudio() {
   function play(src) {
     audioRef.current.src = src;
     audioRef.current.load();
-    return audioRef.current.play();
+    return audioRef.current.play().catch(() => {});
   }
 
   function stop() {
