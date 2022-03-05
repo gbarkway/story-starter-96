@@ -13,13 +13,9 @@ function App() {
   const [pastedImages, setPastedImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const loadingIndicatorTimer = useRef(null);
-  const audioTimer = useRef(null);
 
 
   const handleNext = () => {
-    if (audioTimer.current) {
-      clearTimeout(audioTimer.current);
-    }
     const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
     const nextScene = collection.scenes[nextSceneIndex];
 
@@ -33,9 +29,7 @@ function App() {
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
 
-    audioTimer.current = setTimeout(() => {
-      play(nextScene.sound);
-    }, 500);
+    play(nextScene.sound);
   };
 
   const handleSelectChange = useCallback(
@@ -53,10 +47,6 @@ function App() {
   );
 
   const handlePrev = () => {
-    if (audioTimer.current) {
-      clearTimeout(audioTimer.current);
-    }
-    
     const nextSceneIndex = sceneIndex ? sceneIndex - 1 : collection.scenes.length - 1;
     const nextScene = collection.scenes[nextSceneIndex];
 
@@ -66,13 +56,11 @@ function App() {
     loadingIndicatorTimer.current = setTimeout(() => {
       setLoading(true);
     }, 1000);
-
+    
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
 
-    audioTimer.current = setTimeout(() => {
-      play(nextScene.sound);
-    }, 500);
+    play(nextScene.sound);
   };
 
   return (
