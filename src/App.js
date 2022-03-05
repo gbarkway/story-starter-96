@@ -50,11 +50,11 @@ function App() {
       <div id="topbar">
         <div id="title">Story Starter 1996</div>
         <div id="links">
-          <a href="https://web.archive.org/web/20000815094541/http://www.microsoft.com/kids/creativewriter/" target="_blank">
+          <a href="https://web.archive.org/web/20000815094541/http://www.microsoft.com/kids/creativewriter/" target="_blank" rel="noreferrer">
             About
           </a>
           <span>|</span>
-          <a href="https://twitter.com/gregbarkway" target="_blank">
+          <a href="https://twitter.com/gregbarkway" target="_blank" rel="noreferrer">
             Twitter
           </a>
         </div>
@@ -68,8 +68,11 @@ function App() {
               transform: `translateX(-33%) translateY(-33%) rotate(${thing.rotate}deg)`,
             }}
             key={`pasted${i}`}
+            onClick={() => {
+              play(thing.sound)
+            }}
           >
-            <img src={thing.src}></img>
+            <img src={thing.src} alt={thing.name}></img>
           </div>
         ))}
       </div>
@@ -91,13 +94,14 @@ function App() {
             <label>{scene.name}</label>
           </div>
           <div className="buttons">
-            <button type="button" id="left" onClick={handlePrev}></button>
-            <button type="button" id="right" onClick={handleNext}></button>
+            <button type="button" id="left" title="Previous" onClick={handlePrev}></button>
+            <button type="button" id="right" title="Next" onClick={handleNext}></button>
           </div>
           <div className="closeOk">
             <button
               type="button"
               id="ok"
+              title="Ok"
               onClick={() => {
                 setShow(false);
                 stop();
@@ -105,6 +109,8 @@ function App() {
                   pastedImages.concat([
                     {
                       src: scene.image,
+                      name: scene.name,
+                      sound: scene.sound,
                       // ensure first image centered
                       top: pastedImages.length ? Math.random() * 100 : 40,
                       left: pastedImages.length ? Math.random() * 100 : 30,
@@ -117,6 +123,7 @@ function App() {
             <button
               type="button"
               id="close"
+              title="Close"
               onClick={() => {
                 setShow(false);
                 stop();
@@ -129,6 +136,7 @@ function App() {
           <button
             type="button"
             id="launch"
+            title="Inspiration"
             onClick={() => {
               setShow(true);
               play(scene.sound);
