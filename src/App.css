@@ -10,6 +10,12 @@
   background: linear-gradient(156deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 100%, rgba(0, 212, 255, 1) 100%);
 }
 
+/* preload frame: https://stackoverflow.com/questions/1373142/preloading-css-images */
+body::after{
+  position:absolute; width:0; height:0; overflow:hidden; z-index:-1; 
+  content:url(./frame.png);  
+}
+
 .image {
   width: 246px;
   height: 198px;
