@@ -19,6 +19,8 @@
 .image img {
   width: inherit;
   height: inherit;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .frame {
