@@ -81,8 +81,7 @@ body::after {
   border: 0;
   box-shadow: none;
   padding: 0px;
-  image-rendering: crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
 }
 #left:focus,
 #right:focus,
@@ -115,8 +114,7 @@ body::after {
   border: 0;
   box-shadow: none;
   padding: 0px;
-  image-rendering: crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
   cursor: pointer;
 }
 #launch:active {
@@ -138,8 +136,7 @@ body::after {
   justify-content: flex-end;
   width: 100%;
   height: 46px;
-  image-rendering: crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
 }
 #close {
   background-image: url(./closeButtonSprite.png);
