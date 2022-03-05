@@ -5,6 +5,7 @@ import useAudio from './useAudio';
 import Hourglass from './hourglass.png';
 
 function App() {
+  // first scene+collection is randomized in below useEffect hook
   const [collection, setCollection] = useState(collections[0]);
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
@@ -14,6 +15,14 @@ function App() {
   const [loading, setLoading] = useState(false);
   const loadingIndicatorTimer = useRef(null);
 
+  useEffect(() => {
+    const newCollection = collections[Math.floor(Math.random() * collections.length)]
+    const nextSceneIndex = Math.floor(Math.random() * newCollection.scenes.length)
+
+    setCollection(newCollection);
+    setSceneIndex(nextSceneIndex);
+    setScene(newCollection.scenes[nextSceneIndex]);
+  }, [collections]);
 
   const handleNext = () => {
     const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
