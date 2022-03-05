@@ -82,6 +82,7 @@ body::after {
   box-shadow: none;
   padding: 0px;
   image-rendering: pixelated;
+  cursor: pointer;
 }
 #left:focus,
 #right:focus,
@@ -150,6 +151,7 @@ body::after {
   border: 0;
   box-shadow: none;
   padding: 0px;
+  cursor: pointer;
 }
 #close:active {
   background-position: top right;
@@ -165,6 +167,7 @@ body::after {
   box-shadow: none;
   padding: 0px;
   margin-right: 4px;
+  cursor: pointer;
 }
 #ok:active {
   background-position: top right;
