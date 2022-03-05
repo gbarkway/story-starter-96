@@ -14,7 +14,7 @@ function useAudio() {
   }
 
   function pause() {
-    audioRef.current.load();
+    audioRef.current.pause();
   }
 
   return [play, pause];
