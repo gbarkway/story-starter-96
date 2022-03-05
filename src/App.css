@@ -137,6 +137,7 @@ body::after {
   width: 100%;
   height: 46px;
   image-rendering: pixelated;
+  margin-top: 1px;
 }
 #close {
   background-image: url(./closeButtonSprite.png);
