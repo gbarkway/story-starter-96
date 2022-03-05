@@ -88,7 +88,7 @@ function App() {
             </select>
           </div>
           <div className="image">
-            <img src={scene.image} alt={scene.name}></img>
+            <img src={scene.image} alt={scene.name} onClick={() => play(scene.sound)}></img>
           </div>
           <div className="title">
             <label>{scene.name}</label>
