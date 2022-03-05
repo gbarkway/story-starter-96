@@ -13,11 +13,11 @@ function useAudio() {
     return audioRef.current.play().catch(() => {});
   }
 
-  function stop() {
+  function pause() {
     audioRef.current.load();
   }
 
-  return [play, stop];
+  return [play, pause];
 }
 
 export default useAudio;

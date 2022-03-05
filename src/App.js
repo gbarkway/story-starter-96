@@ -9,7 +9,7 @@ function App() {
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const [show, setShow] = useState(false);
-  const [play, stop] = useAudio();
+  const [play, pause] = useAudio();
   const [pastedImages, setPastedImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const loadingIndicatorTimer = useRef(null);
@@ -128,7 +128,7 @@ function App() {
               title="Ok"
               onClick={() => {
                 setShow(false);
-                stop();
+                pause();
                 setPastedImages(
                   pastedImages.concat([
                     {
@@ -150,7 +150,7 @@ function App() {
               title="Close"
               onClick={() => {
                 setShow(false);
-                stop();
+                pause();
               }}
             ></button>
           </div>
