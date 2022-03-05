@@ -19,7 +19,7 @@
 .image img {
   width: inherit;
   height: inherit;
-  image-rendering: crisp-edges;
+  /*Stop chrome from making images blurry*/
   image-rendering: -webkit-optimize-contrast;
 }
 
