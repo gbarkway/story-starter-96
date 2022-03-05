@@ -87,11 +87,6 @@ body::after {
   image-rendering: pixelated;
   cursor: pointer;
 }
-#left:focus,
-#right:focus,
-#close:focus {
-  outline: none;
-}
 #left {
   background-image: url(./leftButtonSprite.png);
   background-position: top left;
