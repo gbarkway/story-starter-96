@@ -4,13 +4,13 @@ import { LoadingIndicator, useLoadingIndicator } from './LoadingIndicator';
 import useAudio from './useAudio';
 import Launcher from './Launcher';
 
-function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCancel = (f) => f }) {
+function usePicker() {
   const [collection, setCollection] = useState(collections[0]);
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const [play, pause] = useAudio();
   const [isLoading, showLoading, hideLoading] = useLoadingIndicator();
-  const [show, setShow] = useState(false);
+  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     const newCollection = collections[Math.floor(Math.random() * collections.length)];
@@ -32,18 +32,6 @@ function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCanc
     play(nextScene.sound);
   };
 
-  const handleSelectChange = (event) => {
-    showLoading();
-
-    const newCollection = collections.find((sc) => sc.name === event.target.value);
-    const newScene = newCollection.scenes[0];
-    setSceneIndex(0);
-    setScene(newScene);
-    setCollection(newCollection);
-
-    play(newScene.sound);
-  };
-
   const handlePrev = () => {
     showLoading();
 
@@ -55,13 +43,56 @@ function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCanc
     play(nextScene.sound);
   };
 
-  return show ? (
+  const setCollectionByName = (name) => {
+    showLoading();
+
+    const newCollection = collections.find((sc) => sc.name === name);
+    const newScene = newCollection.scenes[0];
+    setSceneIndex(0);
+    setScene(newScene);
+    setCollection(newCollection);
+
+    play(newScene.sound);
+  }
+
+  const open = () => {
+    setOpened(true);
+    play(scene.sound);
+  }
+
+  const close = () => {
+    pause();
+    setOpened(false);
+  }
+
+  return [scene, handleNext, handlePrev, collection.name, setCollectionByName, isLoading, hideLoading, play, opened, open, close]
+}
+
+function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f) => f }) {
+  const [
+    scene,
+    next,
+    prev,
+    collectionName,
+    setCollectionByName,
+    isLoading,
+    hideLoading,
+    play,
+    opened,
+    open,
+    close,
+  ] = usePicker();
+
+  return opened ? (
     <div className="frame">
       <div className="dropdown">
-        <select name="sceneCollections" value={collection.name} onChange={handleSelectChange}>
-          {collections.map((collection, i) => (
-            <option value={collection.name} key={`dropdown${i}`}>
-              {collection.name}
+        <select name="sceneCollections" value={collectionName} onChange={(event) => {
+          setCollectionByName(event.target.value);
+        }}>
+          {collections.map(collection => collection.name)
+          .map((name, i) => (
+            <option value={name} key={`dropdown${i}`}>
+              {name}
             </option>
           ))}
         </select>
@@ -72,9 +103,7 @@ function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCanc
           src={scene.image}
           alt={scene.name}
           onClick={() => play(scene.sound)}
-          onLoad={() => {
-            hideLoading();
-          }}
+          onLoad={hideLoading}
         ></img>
         <LoadingIndicator visible={isLoading}></LoadingIndicator>
       </div>
@@ -82,8 +111,8 @@ function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCanc
         <label>{scene.name}</label>
       </div>
       <div className="buttons">
-        <button type="button" id="left" title="Previous" onClick={handlePrev}></button>
-        <button type="button" id="right" title="Next" onClick={handleNext}></button>
+        <button type="button" id="left" title="Previous" onClick={prev}></button>
+        <button type="button" id="right" title="Next" onClick={next}></button>
       </div>
       <div className="closeOk">
         <button
@@ -91,8 +120,7 @@ function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCanc
           id="ok"
           title="Ok"
           onClick={() => {
-            pause();
-            setShow(false);
+            close();
             onImagePicked(scene);
           }}
         ></button>
@@ -101,8 +129,7 @@ function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCanc
           id="close"
           title="Close"
           onClick={() => {
-            pause();
-            setShow(false);
+            close();
             onCancel();
           }}
         ></button>
@@ -113,9 +140,8 @@ function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCanc
     // block sounds unless played from onclick
     <Launcher
       onClick={() => {
-        onLauncherClicked();
-        setShow(true);
-        play(scene.sound);
+        onOpening();
+        open();
       }}
     ></Launcher>
   );

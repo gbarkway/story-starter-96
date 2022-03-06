@@ -5,7 +5,7 @@ function useLoadingIndicator() {
   const [loading, setLoading] = useState(false);
   const loadingIndicatorTimer = useRef(null);
 
-  const show = () => {
+  const opened = () => {
     if (loadingIndicatorTimer.current) {
       clearTimeout(loadingIndicatorTimer.current);
     }
@@ -22,7 +22,7 @@ function useLoadingIndicator() {
     loadingIndicatorTimer.current = null;
   };
 
-  return [loading, show, hide];
+  return [loading, opened, hide];
 }
 
 function LoadingIndicator({ visible = false }) {

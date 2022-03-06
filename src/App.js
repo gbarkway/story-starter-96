@@ -17,7 +17,7 @@ function App() {
         onImagePicked={(scene) => {
           addScene(scene);
         }}
-        onLauncherClicked={() => {
+        onOpening={() => {
           pause();
         }}
       ></Picker>
