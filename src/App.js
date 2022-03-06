@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import collections from './scenes';
 import useAudio from './useAudio';
+import { Background, useBackground } from './Background';
 import { LoadingIndicator, useLoadingIndicator } from './LoadingIndicator';
-
 
 function App() {
   // first scene+collection is randomized in below useEffect hook
@@ -12,7 +12,7 @@ function App() {
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const [show, setShow] = useState(false);
   const [play, pause] = useAudio();
-  const [pastedImages, setPastedImages] = useState([]);
+  const [pastedImages, addScene] = useBackground();
   const [isLoading, showLoading, hideLoading] = useLoadingIndicator();
 
   useEffect(() => {
@@ -72,23 +72,7 @@ function App() {
           </a>
         </div>
       </div>
-      <div id="bg" className="bg">
-        {pastedImages.map((thing, i) => (
-          <div
-            style={{
-              top: `${thing.top}%`,
-              left: `${thing.left}%`,
-              transform: `translateX(-33%) translateY(-33%) rotate(${thing.rotate}deg)`,
-            }}
-            key={`pasted${i}`}
-            onClick={() => {
-              play(thing.sound)
-            }}
-          >
-            <img src={thing.src} alt={thing.name}></img>
-          </div>
-        ))}
-      </div>
+      <Background pastedImages={pastedImages} onImageClick={(thing) => play(thing.sound)}></Background>
       {show ? (
         <div className="frame">
           <div className="dropdown">
@@ -121,19 +105,7 @@ function App() {
               onClick={() => {
                 setShow(false);
                 pause();
-                setPastedImages(
-                  pastedImages.concat([
-                    {
-                      src: scene.image,
-                      name: scene.name,
-                      sound: scene.sound,
-                      // ensure first image centered
-                      top: pastedImages.length ? Math.random() * 100 : 40,
-                      left: pastedImages.length ? Math.random() * 100 : 30,
-                      rotate: Math.random() * 60 - 30,
-                    },
-                  ])
-                );
+                addScene(scene);
               }}
             ></button>
             <button
