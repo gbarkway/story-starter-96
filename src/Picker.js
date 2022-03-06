@@ -53,58 +53,45 @@ function usePicker() {
     setCollection(newCollection);
 
     play(newScene.sound);
-  }
+  };
 
   const open = () => {
     setOpened(true);
     play(scene.sound);
-  }
+  };
 
   const close = () => {
     pause();
     setOpened(false);
-  }
+  };
 
-  return [scene, handleNext, handlePrev, collection.name, setCollectionByName, isLoading, hideLoading, play, opened, open, close]
+  return [scene, handleNext, handlePrev, collection.name, setCollectionByName, isLoading, hideLoading, play, opened, open, close];
 }
 
 function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f) => f }) {
-  const [
-    scene,
-    next,
-    prev,
-    collectionName,
-    setCollectionByName,
-    isLoading,
-    hideLoading,
-    play,
-    opened,
-    open,
-    close,
-  ] = usePicker();
+  const [scene, next, prev, collectionName, setCollectionByName, isLoading, hideLoading, play, opened, open, close] = usePicker();
 
   return opened ? (
     <div className="frame">
       <div className="dropdown">
-        <select name="sceneCollections" value={collectionName} onChange={(event) => {
-          setCollectionByName(event.target.value);
-        }}>
-          {collections.map(collection => collection.name)
-          .map((name, i) => (
-            <option value={name} key={`dropdown${i}`}>
-              {name}
-            </option>
-          ))}
+        <select
+          name="sceneCollections"
+          value={collectionName}
+          onChange={(event) => {
+            setCollectionByName(event.target.value);
+          }}
+        >
+          {collections
+            .map((collection) => collection.name)
+            .map((name, i) => (
+              <option value={name} key={`dropdown${i}`}>
+                {name}
+              </option>
+            ))}
         </select>
       </div>
       <div className="image">
-        <img
-          id="main-image"
-          src={scene.image}
-          alt={scene.name}
-          onClick={() => play(scene.sound)}
-          onLoad={hideLoading}
-        ></img>
+        <img id="main-image" src={scene.image} alt={scene.name} onClick={() => play(scene.sound)} onLoad={hideLoading}></img>
         <LoadingIndicator visible={isLoading}></LoadingIndicator>
       </div>
       <div className="title">
