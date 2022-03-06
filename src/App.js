@@ -5,6 +5,7 @@ import useAudio from './useAudio';
 import { Background, useBackground } from './Background';
 import { LoadingIndicator, useLoadingIndicator } from './LoadingIndicator';
 import Topbar from './Topbar';
+import Launcher from './Launcher';
 
 function App() {
   // first scene+collection is randomized in below useEffect hook
@@ -110,18 +111,10 @@ function App() {
           </div>
         </div>
       ) : (
-        <div className="launcher">
-          <button
-            type="button"
-            id="launch"
-            title="Inspiration"
-            onClick={() => {
-              setShow(true);
-              play(scene.sound);
-            }}
-          ></button>
-          {/* {pastedImages.length ? null : <label>Turn on sound and click for inspiration</label>} */}
-        </div>
+        <Launcher onClick={() => {
+          setShow(true);
+          play(scene.sound);
+        }}></Launcher>
       )}
     </div>
   );
