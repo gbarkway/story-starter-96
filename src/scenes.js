@@ -4,6 +4,8 @@ import familyAndFriends from './sceneManifests/family_and_friends.json';
 import fantasy from './sceneManifests/fantasy.json';
 import mystery from './sceneManifests/mystery.json';
 import romance from './sceneManifests/romance.json';
+import sports from './sceneManifests/sports.json';
+import whatsGoingOn from './sceneManifests/whats_going_on.json';
 
 // import everything in a folder
 // https://webpack.js.org/guides/dependency-management/#context-module-api
@@ -21,6 +23,6 @@ const importScenes = (sceneManifest) => ({
   })),
 });
 
-const scenes = [adventure, animals, familyAndFriends, fantasy, mystery, romance].map(importScenes);
+const scenes = [adventure, animals, familyAndFriends, fantasy, mystery, romance, sports, whatsGoingOn].map(importScenes);
 
 export default scenes;
