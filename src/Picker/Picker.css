@@ -1,135 +1,135 @@
 /* preload frame: https://stackoverflow.com/questions/1373142/preloading-css-images */
 body::after {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    z-index: -1;
-    content: url(./frame.png);
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content: url(./frame.png);
 }
 
 .image {
-    width: 246px;
-    height: 198px;
-    margin-left: 18px;
-    /*make loading indicator positioning easier by providing it w/ positioned ancestor*/
-    position: relative;
-  }
-  
-  #main-image {
-    width: inherit;
-    height: inherit;
-    /*Stop chrome from making images blurry*/
-    image-rendering: -webkit-optimize-contrast;
-    cursor: pointer;
-  }
-  
-  .frame {
-    width: 282px;
-    min-width: 282px;
-    height: 396px;
-    min-height: 396px;
-    background-image: url(./frame.png);
-    z-index: 1;
-  }
-  
-  .dropdown {
-    width: 100%;
-    height: 58px;
-    margin-bottom: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  .dropdown select {
-    width: 181px;
-  }
+  width: 246px;
+  height: 198px;
+  margin-left: 18px;
+  /*make loading indicator positioning easier by providing it w/ positioned ancestor*/
+  position: relative;
+}
 
-  .title {
-    width: 100%;
-    height: 25px;
-    margin-top: 10px;
-    display: flex;
-    color: black;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .buttons {
-    width: 100%;
-    height: 35px;
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  #left,
-  #right {
-    width: 45px;
-    min-width: 45px;
-    height: 32px;
-    border: 0;
-    box-shadow: none;
-    padding: 0px;
-    image-rendering: pixelated;
-    cursor: pointer;
-  }
-  #left {
-    background-image: url(./leftButtonSprite.png);
-    background-position: top left;
-    margin-right: 8px;
-  }
-  #left:active {
-    background-position: top right;
-  }
-  #right {
-    background-image: url(./rightButtonSprite.png);
-    background-position: top left;
-    margin-left: 8px;
-  }
-  #right:active {
-    background-position: top right;
-  }
+#main-image {
+  width: inherit;
+  height: inherit;
+  /*Stop chrome from making images blurry*/
+  image-rendering: -webkit-optimize-contrast;
+  cursor: pointer;
+}
 
-  .closeOk {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 46px;
-    image-rendering: pixelated;
-    margin-top: 1px;
-  }
-  #close {
-    background-image: url(./closeButtonSprite.png);
-    height: 46px;
-    min-height: 46px;
-    width: 45px;
-    min-width: 45px;
-    background-position: top left;
-    margin-right: 13px;
-    border: 0;
-    box-shadow: none;
-    padding: 0px;
-    cursor: pointer;
-  }
-  #close:active {
-    background-position: top right;
-  }
-  #ok {
-    background-image: url(./okButtonSprite.png);
-    height: 47px;
-    min-height: 47px;
-    width: 47px;
-    min-width: 47px;
-    background-position: top left;
-    border: 0;
-    box-shadow: none;
-    padding: 0px;
-    margin-right: 4px;
-    cursor: pointer;
-  }
-  #ok:active {
-    background-position: top right;
-  }
+.frame {
+  width: 282px;
+  min-width: 282px;
+  height: 396px;
+  min-height: 396px;
+  background-image: url(./frame.png);
+  z-index: 1;
+}
+
+.dropdown {
+  width: 100%;
+  height: 58px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.dropdown select {
+  width: 181px;
+}
+
+.title {
+  width: 100%;
+  height: 25px;
+  margin-top: 10px;
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  width: 100%;
+  height: 35px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+#left,
+#right {
+  width: 45px;
+  min-width: 45px;
+  height: 32px;
+  border: 0;
+  box-shadow: none;
+  padding: 0px;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+#left {
+  background-image: url(./leftButtonSprite.png);
+  background-position: top left;
+  margin-right: 8px;
+}
+#left:active {
+  background-position: top right;
+}
+#right {
+  background-image: url(./rightButtonSprite.png);
+  background-position: top left;
+  margin-left: 8px;
+}
+#right:active {
+  background-position: top right;
+}
+
+.closeOk {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 46px;
+  image-rendering: pixelated;
+  margin-top: 1px;
+}
+#close {
+  background-image: url(./closeButtonSprite.png);
+  height: 46px;
+  min-height: 46px;
+  width: 45px;
+  min-width: 45px;
+  background-position: top left;
+  margin-right: 13px;
+  border: 0;
+  box-shadow: none;
+  padding: 0px;
+  cursor: pointer;
+}
+#close:active {
+  background-position: top right;
+}
+#ok {
+  background-image: url(./okButtonSprite.png);
+  height: 47px;
+  min-height: 47px;
+  width: 47px;
+  min-width: 47px;
+  background-position: top left;
+  border: 0;
+  box-shadow: none;
+  padding: 0px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+#ok:active {
+  background-position: top right;
+}
