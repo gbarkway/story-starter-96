@@ -4,6 +4,7 @@ import collections from './scenes';
 import useAudio from './useAudio';
 import { Background, useBackground } from './Background';
 import { LoadingIndicator, useLoadingIndicator } from './LoadingIndicator';
+import Topbar from './Topbar';
 
 function App() {
   // first scene+collection is randomized in below useEffect hook
@@ -60,18 +61,7 @@ function App() {
 
   return (
     <div className="App">
-      <div id="topbar">
-        <div id="title">Story Starter 1996</div>
-        <div id="links">
-          <a href="https://web.archive.org/web/20000815094541/http://www.microsoft.com/kids/creativewriter/" target="_blank" rel="noreferrer">
-            About
-          </a>
-          <span>|</span>
-          <a href="https://twitter.com/gregbarkway" target="_blank" rel="noreferrer">
-            Twitter
-          </a>
-        </div>
-      </div>
+      <Topbar></Topbar>
       <Background pastedImages={pastedImages} onImageClick={(thing) => play(thing.sound)}></Background>
       {show ? (
         <div className="frame">
