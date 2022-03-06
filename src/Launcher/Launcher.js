@@ -1,3 +1,5 @@
+import './Launcher.css';
+
 function Launcher({ onClick = (f) => f }) {
   return (
     <div className="launcher">

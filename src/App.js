@@ -1,8 +1,8 @@
 import './App.css';
 import useAudio from './useAudio';
-import { Background, useBackground } from './Background';
-import Topbar from './Topbar';
-import Picker from './Picker';
+import { Background, useBackground } from './Background/Background';
+import Topbar from './Topbar/Topbar';
+import Picker from './Picker/Picker';
 
 function App() {
   const [pastedImages, addScene] = useBackground();

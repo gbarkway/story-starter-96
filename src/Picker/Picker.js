@@ -1,7 +1,8 @@
 import usePicker from './usePicker';
-import { LoadingIndicator } from './LoadingIndicator';
-import Launcher from './Launcher';
-import collections from './scenes';
+import { LoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
+import Launcher from '../Launcher/Launcher';
+import collections from '../scenes';
+import './Picker.css';
 
 function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f) => f }) {
   const [scene, next, prev, collectionName, setCollectionByName, isLoading, hideLoading, play, opened, open, close] = usePicker();

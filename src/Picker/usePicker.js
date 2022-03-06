@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import collections from './scenes';
-import { useLoadingIndicator } from './LoadingIndicator';
-import useAudio from './useAudio';
+import collections from '../scenes';
+import { useLoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
+import useAudio from '../useAudio';
 
 function usePicker() {
   const [collection, setCollection] = useState(collections[0]);

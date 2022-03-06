@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import Hourglass from './hourglass.png';
+import './LoadingIndicator.css';
 
 function useLoadingIndicator() {
   const [loading, setLoading] = useState(false);

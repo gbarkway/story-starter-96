@@ -1,0 +1,27 @@
+#launch {
+    background-image: url(./launcher.gif);
+    width: 39px;
+    min-width: 39px;
+    height: 44px;
+    min-height: 44px;
+    z-index: 1;
+    border: 0;
+    box-shadow: none;
+    padding: 0px;
+    image-rendering: pixelated;
+    cursor: pointer;
+  }
+  #launch:active {
+    background-position: top right;
+  }
+  .launcher {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .launcher label {
+    margin: 5px;
+    font-size: 14px;
+    color: white;
+  }
