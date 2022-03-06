@@ -12,7 +12,7 @@ function useLoadingIndicator() {
     loadingIndicatorTimer.current = setTimeout(() => {
       setLoading(true);
     }, 1000);
-  }
+  };
 
   const hide = () => {
     setLoading(false);
@@ -20,7 +20,7 @@ function useLoadingIndicator() {
 
     clearTimeout(loadingIndicatorTimer.current);
     loadingIndicatorTimer.current = null;
-  }
+  };
 
   return [loading, show, hide];
 }
@@ -32,9 +32,9 @@ function LoadingIndicator({ visible = false }) {
       src={Hourglass}
       alt="Loading"
       style={{
-        "visibility": visible ? "visible" : "hidden"
-      }}>
-    </img>
+        visibility: visible ? 'visible' : 'hidden',
+      }}
+    ></img>
   );
 }
 

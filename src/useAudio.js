@@ -7,13 +7,16 @@ function useAudio() {
     audioRef.current = new Audio();
   }, []);
 
-  const play = useCallback((src) => {
-    audioRef.current.src = src;
-    audioRef.current.load();
-    return audioRef.current.play().catch(() => {});
-  }, [audioRef]);
+  const play = useCallback(
+    (src) => {
+      audioRef.current.src = src;
+      audioRef.current.load();
+      return audioRef.current.play().catch(() => {});
+    },
+    [audioRef]
+  );
 
-  const pause = useCallback((src) => {
+  const pause = useCallback(() => {
     audioRef.current.pause();
   }, [audioRef]);
 

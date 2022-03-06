@@ -4,18 +4,18 @@ import { LoadingIndicator, useLoadingIndicator } from './LoadingIndicator';
 import useAudio from './useAudio';
 import Launcher from './Launcher';
 
-function Picker({ onLauncherClicked = f => f, onImagePicked = f => f, onCancel = f => f}) {
+function Picker({ onLauncherClicked = (f) => f, onImagePicked = (f) => f, onCancel = (f) => f }) {
   const [collection, setCollection] = useState(collections[0]);
   const [sceneIndex, setSceneIndex] = useState(0);
   const [scene, setScene] = useState(collections[0].scenes[sceneIndex]);
   const [play, pause] = useAudio();
   const [isLoading, showLoading, hideLoading] = useLoadingIndicator();
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const newCollection = collections[Math.floor(Math.random() * collections.length)]
-    const nextSceneIndex = Math.floor(Math.random() * newCollection.scenes.length)
-    const nextScene = newCollection.scenes[nextSceneIndex]
+    const newCollection = collections[Math.floor(Math.random() * collections.length)];
+    const nextSceneIndex = Math.floor(Math.random() * newCollection.scenes.length);
+    const nextScene = newCollection.scenes[nextSceneIndex];
     setCollection(newCollection);
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
@@ -42,12 +42,12 @@ function Picker({ onLauncherClicked = f => f, onImagePicked = f => f, onCancel =
     setCollection(newCollection);
 
     play(newScene.sound);
-  }
+  };
 
   const handlePrev = () => {
     showLoading();
 
-    const nextSceneIndex = sceneIndex ? (sceneIndex - 1) : collection.scenes.length -1;
+    const nextSceneIndex = sceneIndex ? sceneIndex - 1 : collection.scenes.length - 1;
     const nextScene = collection.scenes[nextSceneIndex];
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
@@ -67,9 +67,15 @@ function Picker({ onLauncherClicked = f => f, onImagePicked = f => f, onCancel =
         </select>
       </div>
       <div className="image">
-        <img id="main-image" src={scene.image} alt={scene.name} onClick={() => play(scene.sound)} onLoad={() => {
-          hideLoading();
-        }}></img>
+        <img
+          id="main-image"
+          src={scene.image}
+          alt={scene.name}
+          onClick={() => play(scene.sound)}
+          onLoad={() => {
+            hideLoading();
+          }}
+        ></img>
         <LoadingIndicator visible={isLoading}></LoadingIndicator>
       </div>
       <div className="title">
@@ -103,7 +109,7 @@ function Picker({ onLauncherClicked = f => f, onImagePicked = f => f, onCancel =
       </div>
     </div>
   ) : (
-    // Play sound on launcher click instead of on frame shown b/c mobile browsers 
+    // Play sound on launcher click instead of on frame shown b/c mobile browsers
     // block sounds unless played from onclick
     <Launcher
       onClick={() => {
@@ -112,7 +118,7 @@ function Picker({ onLauncherClicked = f => f, onImagePicked = f => f, onCancel =
         play(scene.sound);
       }}
     ></Launcher>
-  )
+  );
 }
 
 export default Picker;

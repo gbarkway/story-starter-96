@@ -15,13 +15,13 @@ function useBackground() {
           rotate: Math.random() * 60 - 30,
         },
       ])
-    )
-  }
+    );
+  };
 
   return [pastedImages, addScene];
 }
 
-function Background({ pastedImages = [], onImageClick = f => f }) {
+function Background({ pastedImages = [], onImageClick = (f) => f }) {
   return (
     <div id="bg" className="bg">
       {pastedImages.map((thing, i) => (
@@ -40,7 +40,7 @@ function Background({ pastedImages = [], onImageClick = f => f }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export { Background, useBackground }
+export { Background, useBackground };

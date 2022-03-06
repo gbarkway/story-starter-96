@@ -11,10 +11,7 @@ function App() {
   return (
     <div className="App">
       <Topbar></Topbar>
-      <Background 
-        pastedImages={pastedImages} 
-        onImageClick={(thing) => play(thing.sound)}
-      ></Background>
+      <Background pastedImages={pastedImages} onImageClick={(thing) => play(thing.sound)}></Background>
 
       <Picker
         onImagePicked={(scene) => {
@@ -22,8 +19,8 @@ function App() {
         }}
         onLauncherClicked={() => {
           pause();
-        }}>
-      </Picker>
+        }}
+      ></Picker>
     </div>
   );
 }
