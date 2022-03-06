@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 function useAudio() {
   const audioRef = useRef();
@@ -7,15 +7,15 @@ function useAudio() {
     audioRef.current = new Audio();
   }, []);
 
-  function play(src) {
+  const play = useCallback((src) => {
     audioRef.current.src = src;
     audioRef.current.load();
     return audioRef.current.play().catch(() => {});
-  }
+  }, [audioRef]);
 
-  function pause() {
+  const pause = useCallback((src) => {
     audioRef.current.pause();
-  }
+  }, [audioRef]);
 
   return [play, pause];
 }
