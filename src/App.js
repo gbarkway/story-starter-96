@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import collections from './scenes';
 import useAudio from './useAudio';
-import Hourglass from './hourglass.png';
+import { LoadingIndicator, useLoadingIndicator } from './LoadingIndicator';
+
 
 function App() {
   // first scene+collection is randomized in below useEffect hook
@@ -12,8 +13,7 @@ function App() {
   const [show, setShow] = useState(false);
   const [play, pause] = useAudio();
   const [pastedImages, setPastedImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const loadingIndicatorTimer = useRef(null);
+  const [isLoading, showLoading, hideLoading] = useLoadingIndicator();
 
   useEffect(() => {
     const newCollection = collections[Math.floor(Math.random() * collections.length)]
@@ -22,19 +22,13 @@ function App() {
     setCollection(newCollection);
     setSceneIndex(nextSceneIndex);
     setScene(newCollection.scenes[nextSceneIndex]);
-  }, [collections]);
+  }, []);
 
   const handleNext = () => {
+    showLoading();
+
     const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
     const nextScene = collection.scenes[nextSceneIndex];
-
-    if (loadingIndicatorTimer.current) {
-      clearTimeout(loadingIndicatorTimer.current);
-    }
-    loadingIndicatorTimer.current = setTimeout(() => {
-      setLoading(true);
-    }, 1000);
-
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
 
@@ -42,16 +36,10 @@ function App() {
   };
 
   const handleSelectChange = (event) => {
+    showLoading();
+
     const newCollection = collections.find((sc) => sc.name === event.target.value);
     const newScene = newCollection.scenes[0];
-    
-    if (loadingIndicatorTimer.current) {
-      clearTimeout(loadingIndicatorTimer.current);
-    }
-    loadingIndicatorTimer.current = setTimeout(() => {
-      setLoading(true);
-    }, 1000);
-
     setSceneIndex(0);
     setScene(newScene);
     setCollection(newCollection);
@@ -60,16 +48,10 @@ function App() {
   }
 
   const handlePrev = () => {
-    const nextSceneIndex = sceneIndex ? sceneIndex - 1 : collection.scenes.length - 1;
-    const nextScene = collection.scenes[nextSceneIndex];
+    showLoading();
 
-    if (loadingIndicatorTimer.current) {
-      clearTimeout(loadingIndicatorTimer.current);
-    }
-    loadingIndicatorTimer.current = setTimeout(() => {
-      setLoading(true);
-    }, 1000);
-    
+    const nextSceneIndex = (sceneIndex + 1) % collection.scenes.length;
+    const nextScene = collection.scenes[nextSceneIndex];
     setSceneIndex(nextSceneIndex);
     setScene(nextScene);
 
@@ -120,12 +102,9 @@ function App() {
           </div>
           <div className="image">
             <img id="main-image" src={scene.image} alt={scene.name} onClick={() => play(scene.sound)} onLoad={() => { 
-              setLoading(false);
-              if (loadingIndicatorTimer.current) {
-                clearTimeout(loadingIndicatorTimer.current);
-              }
+              hideLoading();
             }}></img>
-            <img id="loading" src={Hourglass} alt="Loading" style={{"visibility": loading ? "visible" : "hidden"}}></img>
+            <LoadingIndicator visible={isLoading}></LoadingIndicator>
           </div>
           <div className="title">
             <label>{scene.name}</label>
