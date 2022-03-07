@@ -6,8 +6,7 @@
   height: 100%;
   z-index: 0;
   overflow: hidden;
-  background: black;
-  background: url('./space.gif') no-repeat center center fixed; 
+  background: black url('./space.gif') no-repeat center center fixed; 
   background-size: cover;
 }
 
