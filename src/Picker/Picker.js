@@ -1,8 +1,10 @@
-import usePicker from './usePicker';
 import { useState } from 'react';
-import { LoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
-import Launcher from '../Launcher/Launcher';
+
 import collections from '../scenes';
+import Launcher from '../Launcher/Launcher';
+import usePicker from './usePicker';
+import { LoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
+
 import './Picker.css';
 
 function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f) => f }) {

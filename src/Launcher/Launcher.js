@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './Launcher.css';
 
 function Launcher({ showLabel=true, onClick = (f) => f }) {
