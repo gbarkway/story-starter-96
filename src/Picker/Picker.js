@@ -1,4 +1,5 @@
 import usePicker from './usePicker';
+import { useState } from 'react';
 import { LoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
 import Launcher from '../Launcher/Launcher';
 import collections from '../scenes';
@@ -6,6 +7,7 @@ import './Picker.css';
 
 function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f) => f }) {
   const [scene, next, prev, collectionName, setCollectionByName, isLoading, hideLoading, play, opened, open, close] = usePicker();
+  const [showLabel, setShowLabel] = useState(true);
 
   return opened ? (
     <div className="frame">
@@ -62,9 +64,11 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
     // Play sound on launcher click instead of on frame shown b/c mobile browsers
     // block sounds unless played from onclick
     <Launcher
+      showLabel={showLabel}
       onClick={() => {
         onOpening();
         open();
+        setShowLabel(false);
       }}
     ></Launcher>
   );

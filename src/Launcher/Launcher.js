@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import './Launcher.css';
 
-function Launcher({ onClick = (f) => f }) {
+function Launcher({ showLabel=true, onClick = (f) => f }) {
   return (
     <div className="launcher">
-      <button type="button" id="launch" title="Inspiration" onClick={onClick}></button>
+      <button aria-labelledby="launch-label" type="button" id="launch" title="Inspiration" onClick={onClick}></button>
+      <span id="launch-label" hidden={!showLabel}>Click for inspiration</span>
     </div>
   );
 }
