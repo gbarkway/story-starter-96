@@ -32,13 +32,11 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
                 ))}
             </select>
           </div>
-          <div className="image">
+          <figure className="image">
             <img id="main-image" src={scene.image} alt={scene.name} onClick={() => play(scene.sound)} onLoad={hideLoading}></img>
             <LoadingIndicator visible={isLoading}></LoadingIndicator>
-          </div>
-          <div className="title">
-            <label>{scene.name}</label>
-          </div>
+            <figcaption className="title">{scene.name}</figcaption>
+          </figure>
           <div className="buttons">
             <button type="button" id="left" title="Previous" onClick={prev}></button>
             <button type="button" id="right" title="Next" onClick={next}></button>
