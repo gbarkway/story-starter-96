@@ -16,9 +16,11 @@
   z-index: 1;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 5px;
 }
 #title {
   color: white;
   font-size: 14px;
+  font-weight: bold;
 }
