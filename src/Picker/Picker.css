@@ -1,3 +1,8 @@
+main {
+  z-index: 1;
+}
+
+/* Frame */
 /* preload frame: https://stackoverflow.com/questions/1373142/preloading-css-images */
 body::after {
   position: absolute;
@@ -7,23 +12,6 @@ body::after {
   z-index: -1;
   content: url(./frame.png);
 }
-
-.image {
-  margin: 0;
-  width: 100%;
-  /*make loading indicator positioning easier by providing it w/ positioned ancestor*/
-  position: relative;
-}
-
-#main-image {
-  width: 246px;
-  height: 198px;
-  margin-left: 18px;
-  /*Stop chrome from making images blurry*/
-  image-rendering: -webkit-optimize-contrast;
-  cursor: pointer;
-}
-
 .frame {
   width: 282px;
   min-width: 282px;
@@ -32,7 +20,8 @@ body::after {
   background-image: url(./frame.png);
 }
 
-.dropdown {
+/* Dropdown */
+.dropdown-area {
   width: 100%;
   height: 58px;
   margin-bottom: 5px;
@@ -41,12 +30,26 @@ body::after {
   justify-content: flex-end;
   align-items: center;
 }
-
-.dropdown select {
+.dropdown-area select {
   width: 181px;
 }
 
-.title {
+/* Image + caption */
+.image-area {
+  margin: 0;
+  width: 100%;
+  /*make loading indicator positioning easier by providing it w/ positioned ancestor*/
+  position: relative;
+}
+#main-image {
+  width: 246px;
+  height: 198px;
+  margin-left: 18px;
+  /*Stop chrome from making images blurry*/
+  image-rendering: -webkit-optimize-contrast;
+  cursor: pointer;
+}
+.caption {
   width: 100%;
   height: 25px;
   margin-top: 7px;
@@ -56,14 +59,26 @@ body::after {
   align-items: center;
 }
 
-.buttons {
+.sprite-button {
+  image-rendering: pixelated;
+  background-position: top left;
+  border: 0;
+  box-shadow: none;
+  padding: 0px;
+  cursor: pointer;
+}
+.sprite-button:active {
+  background-position: top right;
+}
+
+/* Nav buttons */
+.nav-button-area {
   width: 100%;
   height: 35px;
   margin-top: 6px;
   display: flex;
   justify-content: center;
 }
-
 #left,
 #right {
   width: 45px;
@@ -78,26 +93,15 @@ body::after {
 #right {
   background-image: url(./rightButtonSprite.png);
 }
-.sprite-button {
-  image-rendering: pixelated;
-  background-position: top left;
-  border: 0;
-  box-shadow: none;
-  padding: 0px;
-  cursor: pointer;
-}
-.sprite-button:active {
-  background-position: top right;
-}
 
-.closeOk {
+/* Close + OK buttons */
+.confirmation-button-area {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   height: 46px;
   margin-top: 1px;
 }
-
 #ok {
   background-image: url(./okButtonSprite.png);
   margin-right: 4px;
@@ -113,8 +117,4 @@ body::after {
   width: 45px;
   min-width: 45px;
   margin-right: 13px;
-}
-
-main {
-  z-index: 1;
 }

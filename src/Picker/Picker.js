@@ -15,7 +15,7 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
     <main>
       {opened ? (
         <div className="frame">
-          <div className="dropdown">
+          <div className="dropdown-area">
             <select
               name="sceneCollections"
               value={collectionName}
@@ -32,16 +32,16 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
                 ))}
             </select>
           </div>
-          <figure className="image">
+          <figure className="image-area">
             <img id="main-image" src={scene.image} alt={scene.name} onClick={() => play(scene.sound)} onLoad={hideLoading}></img>
             <LoadingIndicator visible={isLoading}></LoadingIndicator>
-            <figcaption className="title">{scene.name}</figcaption>
+            <figcaption className="caption">{scene.name}</figcaption>
           </figure>
-          <div className="buttons">
+          <div className="nav-button-area">
             <button type="button" className="sprite-button" id="left" title="Previous" aria-label="Previous" onClick={prev}></button>
             <button type="button" className='sprite-button' id="right" title="Next" aria-label="Next" onClick={next}></button>
           </div>
-          <div className="closeOk">
+          <div className="confirmation-button-area">
             <button
               type="button"
               id="ok"
