@@ -1,13 +1,4 @@
-#links a {
-  margin: 10px;
-  color: white;
-  font-size: 14px;
-}
-#links span {
-  color: white;
-  font-size: 14px;
-}
-#topbar {
+.top-bar {
   position: fixed;
   top: 0;
   left: 0;
@@ -18,9 +9,21 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-}
-#title {
   color: white;
   font-size: 14px;
+}
+
+.title {
+  font-size: 14px;
   font-weight: bold;
+  margin: 0;
+}
+
+.links a {
+  margin: 10px;
+  color: white;
+}
+
+.separator::after {
+  content: '|';
 }
