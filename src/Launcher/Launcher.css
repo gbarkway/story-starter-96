@@ -1,24 +1,16 @@
-#launch {
+.launcher {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+#launch-button {
   background-image: url(./launcher.gif);
   width: 39px;
   min-width: 39px;
   height: 44px;
   min-height: 44px;
   z-index: 1;
-  border: 0;
-  box-shadow: none;
-  padding: 0px;
-  image-rendering: pixelated;
-  cursor: pointer;
-}
-#launch:active {
-  background-position: top right;
-}
-.launcher {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
 }
 #launch-label {
   margin: 10px;

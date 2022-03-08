@@ -6,6 +6,7 @@ import usePicker from './usePicker';
 import { LoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
 
 import './Picker.css';
+import '../sprite-button.css';
 
 function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f) => f }) {
   const [scene, next, prev, collectionName, setCollectionByName, isLoading, hideLoading, play, opened, open, close] = usePicker();
@@ -39,7 +40,7 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
           </figure>
           <div className="nav-button-area">
             <button type="button" className="sprite-button" id="left" title="Previous" aria-label="Previous" onClick={prev}></button>
-            <button type="button" className='sprite-button' id="right" title="Next" aria-label="Next" onClick={next}></button>
+            <button type="button" className="sprite-button" id="right" title="Next" aria-label="Next" onClick={next}></button>
           </div>
           <div className="confirmation-button-area">
             <button
@@ -47,7 +48,7 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
               id="ok"
               title="Ok"
               aria-label="Ok"
-              className='sprite-button'
+              className="sprite-button"
               onClick={() => {
                 close();
                 onImagePicked(scene);
@@ -58,7 +59,7 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
               id="close"
               title="Close"
               aria-label="Close"
-              className='sprite-button'
+              className="sprite-button"
               onClick={() => {
                 close();
                 onCancel();

@@ -59,18 +59,6 @@ body::after {
   align-items: center;
 }
 
-.sprite-button {
-  image-rendering: pixelated;
-  background-position: top left;
-  border: 0;
-  box-shadow: none;
-  padding: 0px;
-  cursor: pointer;
-}
-.sprite-button:active {
-  background-position: top right;
-}
-
 /* Nav buttons */
 .nav-button-area {
   width: 100%;
