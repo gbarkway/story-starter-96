@@ -38,8 +38,8 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
             <figcaption className="title">{scene.name}</figcaption>
           </figure>
           <div className="buttons">
-            <button type="button" id="left" title="Previous" aria-label="Previous" onClick={prev}></button>
-            <button type="button" id="right" title="Next" aria-label="Next" onClick={next}></button>
+            <button type="button" className="sprite-button" id="left" title="Previous" aria-label="Previous" onClick={prev}></button>
+            <button type="button" className='sprite-button' id="right" title="Next" aria-label="Next" onClick={next}></button>
           </div>
           <div className="closeOk">
             <button
@@ -47,6 +47,7 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
               id="ok"
               title="Ok"
               aria-label="Ok"
+              className='sprite-button'
               onClick={() => {
                 close();
                 onImagePicked(scene);
@@ -57,6 +58,7 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
               id="close"
               title="Close"
               aria-label="Close"
+              className='sprite-button'
               onClick={() => {
                 close();
                 onCancel();
