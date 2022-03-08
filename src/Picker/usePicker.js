@@ -3,6 +3,8 @@ import collections from '../sceneCollections';
 import { useLoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
 import useAudio from '../useAudio';
 
+const collectionNames = collections.map((collection) => collection.name);
+
 function usePicker() {
   const [collection, setCollection] = useState(collections[0]);
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -67,4 +69,4 @@ function usePicker() {
   return [scene, handleNext, handlePrev, collection.name, setCollectionByName, isLoading, hideLoading, play, opened, open, close];
 }
 
-export default usePicker;
+export { usePicker, collectionNames };

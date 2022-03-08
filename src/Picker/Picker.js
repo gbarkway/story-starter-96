@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-import collections from '../sceneCollections';
 import Launcher from '../Launcher/Launcher';
-import usePicker from './usePicker';
+import { usePicker, collectionNames } from './usePicker';
 import { LoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
 
 import './Picker.css';
@@ -18,19 +17,17 @@ function Picker({ onOpening = (f) => f, onImagePicked = (f) => f, onCancel = (f)
         <div className="frame">
           <div className="dropdown-area">
             <select
-              name="sceneCollections"
+              name="scene-collections"
               value={collectionName}
               onChange={(event) => {
                 setCollectionByName(event.target.value);
               }}
             >
-              {collections
-                .map((collection) => collection.name)
-                .map((name, i) => (
-                  <option value={name} key={`dropdown${i}`}>
-                    {name}
-                  </option>
-                ))}
+              {collectionNames.map((name, i) => (
+                <option value={name} key={`dropdown${i}`}>
+                  {name}
+                </option>
+              ))}
             </select>
           </div>
           <figure className="image-area">
