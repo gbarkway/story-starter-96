@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import collections from '../scenes';
+import collections from '../sceneCollections';
 import { useLoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
 import useAudio from '../useAudio';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import collections from '../scenes';
+import collections from '../sceneCollections';
 import Launcher from '../Launcher/Launcher';
 import usePicker from './usePicker';
 import { LoadingIndicator } from '../LoadingIndicator/LoadingIndicator';
