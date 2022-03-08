@@ -38,7 +38,7 @@ body::after {
 .image-area {
   margin: 0;
   width: 100%;
-  /*make loading indicator positioning easier by providing it w/ positioned ancestor*/
+  /*I am a positioned ancestor that makes the loading indicator's positioning work*/
   position: relative;
 }
 #main-image {
