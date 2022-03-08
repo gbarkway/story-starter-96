@@ -25,7 +25,7 @@ function useBackground() {
 
 function Background({ pastedImages = [], onImageClick = (f) => f }) {
   return (
-    <div id="bg" className="bg">
+    <div className="bg">
       {pastedImages.map((thing, i) => (
         <div
           style={{

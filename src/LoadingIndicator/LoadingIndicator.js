@@ -30,12 +30,10 @@ function useLoadingIndicator() {
 function LoadingIndicator({ visible = false }) {
   return (
     <img
-      id="loading"
+      className='loading'
       src={Hourglass}
       alt="Loading"
-      style={{
-        visibility: visible ? 'visible' : 'hidden',
-      }}
+      hidden={!visible}
     ></img>
   );
 }
