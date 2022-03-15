@@ -21,7 +21,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
    - E.g. for a scene called "My new scene!" there should be two files: `My new scene_.mp3` and `My new scene_.png`
 3. Add a new json file to `./sceneCollectionManifests`.
 
-```json
+```jsonc
 {
   "name": "My scene collection", // appears in the dropdown
   "directory": "mySceneCollection", // name of subfolder in sceneResources
