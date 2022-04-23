@@ -6,17 +6,17 @@ import useAudio from './useAudio';
 import './App.css';
 
 function App() {
-  const [pastedImages, addScene] = useBackground();
+  const [backgroundScenes, addBackgroundScene] = useBackground();
   const [play, pause] = useAudio();
 
   return (
     <div className="App">
       <Topbar></Topbar>
-      <Background pastedImages={pastedImages} onImageClick={(thing) => play(thing.sound)}></Background>
+      <Background backgroundScenes={backgroundScenes} onImageClick={(bgScene) => play(bgScene.sound)}></Background>
 
       <Picker
         onImagePicked={(scene) => {
-          addScene(scene);
+          addBackgroundScene(scene);
         }}
         onOpening={() => {
           pause();

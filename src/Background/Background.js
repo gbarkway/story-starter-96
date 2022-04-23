@@ -3,42 +3,42 @@ import { useState } from 'react';
 import './Background.css';
 
 function useBackground() {
-  const [pastedImages, setPastedImages] = useState([]);
-  const addScene = (scene) => {
-    setPastedImages(
-      pastedImages.concat([
+  const [backgroundScenes, setBackgroundScenes] = useState([]);
+  const addBackgroundScene = (scene) => {
+    setBackgroundScenes(
+      backgroundScenes.concat([
         {
           src: scene.image,
           name: scene.name,
           sound: scene.sound,
           // ensure first image centered
-          top: pastedImages.length ? Math.random() * 100 : 40,
-          left: pastedImages.length ? Math.random() * 100 : 30,
+          top: backgroundScenes.length ? Math.random() * 100 : 40,
+          left: backgroundScenes.length ? Math.random() * 100 : 30,
           rotate: Math.random() * 60 - 30,
         },
       ])
     );
   };
 
-  return [pastedImages, addScene];
+  return [backgroundScenes, addBackgroundScene];
 }
 
-function Background({ pastedImages = [], onImageClick = (f) => f }) {
+function Background({ backgroundScenes = [], onImageClick = (f) => f }) {
   return (
     <div className="bg">
-      {pastedImages.map((thing, i) => (
+      {backgroundScenes.map((bgScene, i) => (
         <div
           style={{
-            top: `${thing.top}%`,
-            left: `${thing.left}%`,
-            transform: `translateX(-33%) translateY(-33%) rotate(${thing.rotate}deg)`,
+            top: `${bgScene.top}%`,
+            left: `${bgScene.left}%`,
+            transform: `translateX(-33%) translateY(-33%) rotate(${bgScene.rotate}deg)`,
           }}
-          key={`pasted${i}`}
+          key={`bg-scene-${i}`}
           onClick={() => {
-            onImageClick(thing);
+            onImageClick(bgScene);
           }}
         >
-          <img src={thing.src} alt={thing.name}></img>
+          <img src={bgScene.src} alt={bgScene.name}></img>
         </div>
       ))}
     </div>
