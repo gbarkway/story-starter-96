@@ -4,11 +4,19 @@ Microsoft Creative Writer 2's uncanny story starters, now in your browser!
 
 ![Screenshot](screenshot.png)
 
+## Getting Started
+
+This project was developed with **node 16.14** and **npm 8.3.1**.
+
+```
+npm install
+npm start
+```
+
+## Other Scripts
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-- `npm start`
 - `npm test`
 - `npm run build`
 
@@ -22,13 +30,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```jsonc
 {
   "name": "My scene collection", // appears in the dropdown
-  "directory": "mySceneCollection", // name of subfolder in sceneResources
+  "directory": "mySceneCollection", // name of folder in sceneResources containing mp3/png files
   "scenes": [
-    "My new scene!" // scene names. Correspond to the mp3/png files in the folder
+    "My new scene!" // scene name. Corresponds to "My new scene_.png"
   ]
 }
 ```
 
-4. Import the new collection in `sceneCollections.js`. In the same file add the imported object to the `scenes` array.
+4. Import the new json at the top of `sceneCollections.js`. In the same file add the imported object to the `scenes` array.
 
 5. Open in a browser and inspect the browser console. If an image or sound in your manifest couldn't be found, you'll know right away.
