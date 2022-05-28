@@ -12,8 +12,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - `npm test`
 - `npm run build`
 
-
-
 ## Adding a New Scene Collection
 
 1. Create a new folder in `./sceneResources`
