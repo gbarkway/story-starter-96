@@ -1,6 +1,6 @@
 # Story Starter 1996
 
-Microsoft Creative Writer 2's uncanny story starters, now in your browser!
+Microsoft Creative Writer 2's uncanny story starters, now in your browser! Hosted [here](https://storystarter1996.ca/).
 
 ![Screenshot](screenshot.png)
 
@@ -13,7 +13,7 @@ npm install
 npm start
 ```
 
-## Other Scripts
+### Other Scripts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -39,4 +39,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 4. Import the new json at the top of `sceneCollections.js`. In the same file add the imported object to the `scenes` array.
 
-5. Open in a browser and inspect the browser console. If an image or sound in your manifest couldn't be found, you'll know right away.
+5. Open in a browser and inspect the browser console. If an image or sound in the json couldn't be found, you'll know right away.
+
+## Imagemagick tips
+
+Batch convert bmp files to png:
+
+```sh
+magick mogrify -format png *.bmp
+```
+
+Convert wmf files to png and resize to 400 width:
+
+```sh
+magick mogrify -format png -size 400 *.wmf
+```
+
+(These create a new image without modifying the old one.)
