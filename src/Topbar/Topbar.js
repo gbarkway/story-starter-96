@@ -9,8 +9,8 @@ function Topbar() {
           About
         </a>
         <span className="separator"></span>
-        <a href="https://twitter.com/gregbarkway" target="_blank" rel="noreferrer">
-          Twitter
+        <a href="https://gregbarkway.bsky.social" target="_blank" rel="noreferrer">
+          Bluesky
         </a>
       </nav>
     </header>
